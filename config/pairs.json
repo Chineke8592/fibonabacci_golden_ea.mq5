@@ -1,0 +1,44 @@
+{
+  "major_pairs": [
+    "EURUSD",
+    "GBPUSD", 
+    "USDJPY",
+    "USDCHF",
+    "AUDUSD",
+    "USDCAD",
+    "NZDUSD"
+  ],
+  "cross_pairs": [
+    "EURJPY",
+    "GBPJPY",
+    "EURGBP",
+    "EURAUD",
+    "GBPAUD",
+    "AUDCAD"
+  ],
+  "pip_settings": {
+    "standard_pairs": {
+      "pip_value": 0.0001,
+      "pairs": ["EURUSD", "GBPUSD", "USDCHF", "AUDUSD", "USDCAD", "NZDUSD"]
+    },
+    "jpy_pairs": {
+      "pip_value": 0.01,
+      "pairs": ["USDJPY", "EURJPY", "GBPJPY"]
+    }
+  },
+  "analysis_settings": {
+    "pip_intervals": {
+      "min_pips": 20,
+      "max_pips": 30
+    },
+    "timeframes": ["M1", "M5", "M15", "H1", "H4", "D1"],
+    "lookback_periods": {
+      "M1": 1440,
+      "M5": 288,
+      "M15": 96,
+      "H1": 24,
+      "H4": 6,
+      "D1": 1
+    }
+  }
+}

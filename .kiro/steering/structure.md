@@ -5,39 +5,52 @@
 /
 ├── .kiro/                 # Kiro configuration and steering rules
 │   └── steering/          # AI assistant guidance documents
-├── src/                   # Source code (TBD - adjust based on chosen tech)
-├── tests/                 # Test files
-├── docs/                  # Documentation
+├── src/                   # Source code
+│   ├── analyzers/         # Multi-timeframe analysis modules
+│   ├── data/              # Data collection and management
+│   ├── indicators/        # Technical indicators and pip calculations
+│   ├── strategies/        # Trading strategies and signals
+│   └── utils/             # Utility functions and helpers
+├── tests/                 # Unit and integration tests
+├── data/                  # Historical and real-time data storage
+│   ├── raw/               # Raw market data
+│   ├── processed/         # Cleaned and processed data
+│   └── backtest/          # Backtesting results
 ├── config/                # Configuration files
-└── scripts/               # Build and utility scripts
+│   ├── pairs.json         # Currency pairs configuration
+│   ├── timeframes.json    # Timeframe settings
+│   └── api_keys.env       # API credentials (not in git)
+├── notebooks/             # Jupyter notebooks for analysis
+├── reports/               # Generated analysis reports
+└── scripts/               # Automation and utility scripts
 ```
 
 ## File Naming Conventions
-- Use kebab-case for directories and files where appropriate
-- Follow language-specific conventions for source files
-- Use descriptive names that clearly indicate purpose
-- Avoid abbreviations unless they are widely understood
+- Use snake_case for Python files and modules
+- Currency pairs in uppercase (EURUSD, GBPJPY)
+- Timeframes as M1, M5, M15, H1, H4, D1, W1, MN1
+- Date formats: YYYY-MM-DD for files, timestamps for data
 
 ## Code Organization Patterns
-- Separate concerns into logical modules/packages
-- Keep related functionality together
-- Maintain clear separation between business logic and infrastructure
-- Follow established architectural patterns for chosen technology
+- Separate timeframe analyzers by period (M1Analyzer, H1Analyzer, etc.)
+- Keep pip calculation logic in dedicated modules
+- Maintain clear separation between data collection and analysis
+- Use factory patterns for creating analyzers for different pairs
 
 ## Configuration Management
-- Environment-specific configurations in separate files
-- Use environment variables for sensitive data
-- Document all configuration options
-- Provide sensible defaults
+- API keys and secrets in environment variables
+- Trading pairs and timeframes in JSON config files
+- Pip values and spread settings per broker
+- Risk management parameters in separate config
 
-## Documentation Structure
-- README.md in root with project overview and setup instructions
-- API documentation alongside code
-- Architecture decisions recorded in docs/
-- Inline code comments for complex logic
+## Multi-Timeframe Analysis Structure
+- Each timeframe analyzer implements common interface
+- Pip interval tracking: 20-30 pip movements across timeframes
+- Correlation analysis between different time periods
+- Signal convergence detection across multiple timeframes
 
 ## Import/Module Guidelines
-- Use absolute imports where possible
-- Group imports logically (external, internal, relative)
-- Avoid circular dependencies
-- Keep dependency graphs shallow and clear
+- Group imports: standard library, third-party, local modules
+- Use absolute imports from src/ root
+- Avoid circular dependencies between analyzers
+- Keep data models separate from analysis logic
