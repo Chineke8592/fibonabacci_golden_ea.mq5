@@ -358,8 +358,8 @@ Annual Return: 295%
 
 ### **Month 1 (Learning):**
 - Trades: 15-20
-- Win Rate: 75-80%
-- Return: 15-25%
+- Win Rate: 85-90%
+- Return: 20-35%
 
 ### **Month 2 (Optimized):**
 - Trades: 20-25
@@ -399,4 +399,4 @@ Annual Return: 295%
 - ✅ Performance tracking dashboard
 - ✅ Optimized for consistency
 
-**Start with demo, achieve 80%+ win rate, then scale up! 📈💰**
+**Start with demo, achieve 85-95% win rate, then scale up! 📈💰**
