@@ -336,14 +336,14 @@ class WaveCounter:
         print(f"ELLIOTT WAVE COUNT ANALYSIS {f'- {pair}' if pair else ''}")
         print(f"{'='*70}")
         
-        print(f"\n📊 Wave Summary:")
+        print(f"\nWave Summary:")
         print(f"   Total Waves Identified: {summary['total_waves']}")
         print(f"   Impulse Waves (1-2-3-4-5): {summary['impulse_count']}")
         print(f"   Corrective Waves (A-B-C): {summary['corrective_count']}")
         
         # Print impulse waves
         if summary['impulse_waves']:
-            print(f"\n🔵 IMPULSE WAVES (Motive):")
+            print(f"\nIMPULSE WAVES (Motive):")
             print(f"   {'Wave':<6} {'Type':<12} {'Direction':<10} {'Price Range':<25} {'Length %':<12} {'Fib Ratio':<10}")
             print(f"   {'-'*85}")
             
@@ -354,7 +354,7 @@ class WaveCounter:
         
         # Print corrective waves
         if summary['corrective_waves']:
-            print(f"\n🔴 CORRECTIVE WAVES:")
+            print(f"\nCORRECTIVE WAVES:")
             print(f"   {'Wave':<6} {'Type':<12} {'Direction':<10} {'Price Range':<25} {'Length %':<12} {'Fib Ratio':<10}")
             print(f"   {'-'*85}")
             
@@ -364,7 +364,7 @@ class WaveCounter:
                       f"{wave.start_price:.5f} → {wave.end_price:.5f}  {wave.length_percent:>6.2f}%    {fib_str:<10}")
         
         # Wave count distribution
-        print(f"\n📈 Wave Count Distribution:")
+        print(f"\nWave Count Distribution:")
         for wave_num, count in sorted(summary['wave_numbers'].items()):
             print(f"   Wave {wave_num}: {count} occurrences")
         

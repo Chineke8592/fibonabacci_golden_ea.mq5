@@ -2,6 +2,10 @@
 Main entry point for comprehensive forex analysis system.
 Includes Elliott Wave, trend analysis, chart patterns, and divergence/convergence.
 """
+import sys
+import io
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+
 import json
 import pandas as pd
 import numpy as np
@@ -30,7 +34,7 @@ def generate_realistic_forex_data(pair: str, timeframe: str, periods: int = 200)
     timestamps = pd.date_range(
         start=datetime.now() - timedelta(hours=periods),
         periods=periods,
-        freq='1H' if timeframe == 'H1' else '5min' if timeframe == 'M5' else '1min'
+        freq='1h' if timeframe == 'H1' else '5min' if timeframe == 'M5' else '1min'
     )
     
     # Create more realistic price movements with trends
