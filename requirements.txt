@@ -11,3 +11,5 @@ jupyter>=1.0.0
 APScheduler>=3.9.0
 SQLAlchemy>=1.4.0
 kaleido>=0.2.1
+# MetaTrader5 - Install separately from: https://pypi.org/project/MetaTrader5/
+# pip install MetaTrader5 (Windows only)

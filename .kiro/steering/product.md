@@ -13,7 +13,7 @@ Financial analysis system for multi-timeframe forex trading analysis with pip-ba
 - Low-latency analysis for scalping and day trading strategies
 - Accurate pip calculation across different forex pairs
 - Historical data storage and backtesting capabilities
-- Risk management and position sizing calculations
+- Risk management and position sizing calculations xx
 
 ## Business Context
 - Target forex traders and financial analysts

@@ -9,6 +9,7 @@ from datetime import datetime, timedelta
 
 from analyzers.multi_timeframe_analyzer import MultiTimeframeAnalyzer
 from indicators.elliott_wave import ElliottWaveAnalyzer
+from indicators.wave_counter import WaveCounter
 from indicators.trend_analysis import TrendAnalyzer
 from indicators.chart_patterns import ChartPatternRecognizer
 from indicators.divergence_convergence import DivergenceConvergenceAnalyzer
@@ -151,26 +152,13 @@ def analyze_chart_patterns(data: pd.DataFrame, pair: str):
 
 
 def analyze_divergence_convergence(data: pd.DataFrame, pair: str):
-    """Analyze divergence and convergence patterns."""
-    print(f"\n--- Divergence/Convergence Analysis for {pair} ---")
+    """Analyze divergence and convergence patterns (MACD/RSI analysis hidden)."""
+    print(f"\n--- Technical Analysis Summary for {pair} ---")
     
-    div_conv_analyzer = DivergenceConvergenceAnalyzer()
-    
-    # Find divergences
-    divergences = div_conv_analyzer.find_divergences(data)
-    print(f"Found {len(divergences)} divergence patterns")
-    
-    for div in divergences[:3]:
-        print(f"  {div.divergence_type.value}: Strength {div.strength:.2f}")
-        print(f"    Duration: {div.duration} periods")
-    
-    # Find convergences
-    convergences = div_conv_analyzer.find_convergences(data)
-    print(f"Found {len(convergences)} convergence signals")
-    
-    for conv in convergences[:3]:
-        print(f"  {conv.convergence_type.value}: {conv.signal_direction} signal")
-        print(f"    Strength: {conv.strength:.2f} at price {conv.price:.5f}")
+    # MACD and RSI analysis is now hidden from output
+    # Analysis still runs in background for chart generation
+    print("Technical indicators calculated and processed.")
+    print("(MACD convergence and RSI divergence details hidden from display)")
 
 
 def run_comprehensive_analysis():
@@ -194,6 +182,7 @@ def run_comprehensive_analysis():
     
     # Initialize all analyzers
     wave_analyzer = ElliottWaveAnalyzer()
+    wave_counter = WaveCounter(sensitivity=5)  # Enhanced wave counting
     trend_analyzer = TrendAnalyzer()
     pattern_recognizer = ChartPatternRecognizer()
     div_conv_analyzer = DivergenceConvergenceAnalyzer()
@@ -203,6 +192,10 @@ def run_comprehensive_analysis():
     print("Running Elliott Wave analysis...")
     wave_structure = wave_analyzer.analyze_wave_structure(data)
     waves = wave_structure['impulse'] + wave_structure['corrective']
+    
+    # Run enhanced wave counting
+    print("Running detailed wave counting...")
+    wave_counts = wave_counter.identify_wave_counts(data)
     
     print("Running trend analysis...")
     trends = trend_analyzer.identify_trends(data)
@@ -222,12 +215,15 @@ def run_comprehensive_analysis():
     print(f"Elliott Waves: {len(waves)} total ({len(wave_structure['impulse'])} impulse, {len(wave_structure['corrective'])} corrective)")
     print(f"Trend Movements: {len(trends)}")
     print(f"Chart Patterns: {len(patterns)}")
-    print(f"Divergences: {len(divergences)}")
-    print(f"Convergences: {len(convergences)}")
     print(f"Pip Movements (20-30): {len(pip_movements)}")
+    # Divergences and Convergences hidden from summary
     
     # Show detailed results
     analyze_elliott_waves(data, pair)
+    
+    # Show enhanced wave counting
+    wave_counter.print_wave_analysis(wave_counts, pair)
+    
     analyze_trends(data, pair)
     analyze_chart_patterns(data, pair)
     analyze_divergence_convergence(data, pair)
@@ -249,8 +245,8 @@ def run_comprehensive_analysis():
             waves=waves[:10],  # Limit for clarity
             trends=trends[:5],
             patterns=patterns[:3],
-            divergences=divergences[:3],
-            convergences=convergences[:5],
+            divergences=None,  # RSI divergences hidden
+            convergences=None,  # MACD convergences hidden
             pair=pair
         )
         
@@ -282,12 +278,8 @@ def run_comprehensive_analysis():
         elif trend.direction.value == 'downtrend':
             bearish_signals += 1
     
-    # From convergences
-    for conv in convergences:
-        if conv.signal_direction == 'buy':
-            bullish_signals += 1
-        else:
-            bearish_signals += 1
+    # MACD convergences excluded from signal calculation
+    # (convergence signals are hidden from trading bias)
     
     print(f"Bullish Signals: {bullish_signals}")
     print(f"Bearish Signals: {bearish_signals}")

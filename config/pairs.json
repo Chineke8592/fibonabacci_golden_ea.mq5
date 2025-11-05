@@ -39,6 +39,14 @@
       "H1": 24,
       "H4": 6,
       "D1": 1
+    },
+    "display_options": {
+      "show_macd_convergence": false,
+      "show_rsi_divergence": false,
+      "show_elliott_waves": true,
+      "show_trends": true,
+      "show_chart_patterns": true,
+      "show_pip_analysis": true
     }
   }
 }
